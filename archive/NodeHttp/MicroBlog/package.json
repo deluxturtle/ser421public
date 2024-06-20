@@ -11,6 +11,6 @@
     "start": "node app.js"
   },
   "dependencies": {
-    "marked": "4.0.10"
+    "marked": "^13.0.0"
   }
 }

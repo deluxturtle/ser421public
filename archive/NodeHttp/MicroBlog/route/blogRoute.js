@@ -1,3 +1,5 @@
+var marked = require('marked');
+
 var BlogRoute = function BlogRoute(context) {
   this.res = context.res;
   this.req = context.req;
@@ -35,8 +37,7 @@ BlogRoute.prototype.renderPost = function renderPost(err, html) {
     this.res.end('Internal error.');
     return;
   }
-
-  var htmlContent = this.message.marked(this.rawContent);
+  var htmlContent = this.message.marked.parse(this.rawContent);
   var responseContent = this.message.mustacheTemplate(html, { postContent: htmlContent });
 
   this.res.writeHead(200, { 'Content-Type': 'text/html; charset=utf-8' });
